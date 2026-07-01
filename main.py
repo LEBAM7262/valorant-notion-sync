@@ -1,18 +1,24 @@
 import os
 import requests
-from notion_client import Client
 
-NOTION_TOKEN = os.environ["NOTION_TOKEN"]
-DATABASE_ID = os.environ["NOTION_DATABASE_ID"]
-RIOT_API_KEY = os.environ["RIOT_API_KEY"]
+API_KEY = os.environ["HENRIK_API_KEY"]
 
-GAME_NAME = "lebam1325"
-TAG_LINE = "ryan"
+REGION = "ap"
+PLATFORM = "pc"
+NAME = "lebam1325"
+TAG = "ryan"
 
-notion = Client(auth=NOTION_TOKEN)
+url = f"https://api.henrikdev.xyz/valorant/v4/matches/{REGION}/{PLATFORM}/{NAME}/{TAG}"
 
 headers = {
-    "X-Riot-Token": RIOT_API_KEY
+    "Authorization": API_KEY
 }
 
-print("GameHub Sync Started")
+params = {
+    "size": 1
+}
+
+response = requests.get(url, headers=headers, params=params)
+
+print(response.status_code)
+print(response.text)
