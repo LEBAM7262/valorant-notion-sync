@@ -14,10 +14,12 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-      - run: python main.py
-  env:
-    NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-    NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-    HENRIK_API_KEY: ${{ secrets.HENRIK_API_KEY }}
+      - name: Run main.py
+        env:
+          HENRIK_API_KEY: ${{ secrets.HENRIK_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        run: python main.py
