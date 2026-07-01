@@ -17,7 +17,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - run: python main.py
-        env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+  env:
+    NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+    NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+    HENRIK_API_KEY: ${{ secrets.HENRIK_API_KEY }}
